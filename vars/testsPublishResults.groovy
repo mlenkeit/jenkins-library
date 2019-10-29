@@ -54,6 +54,10 @@ void call(Map parameters = [:]) {
 
         prepare(parameters)
 
+        print "testsPublishResults"
+        print "stage " + (parameters.stageName ?: env.STAGE_NAME)
+        print "stage from env " + env.STAGE_NAME
+
         // load default & individual configuration
         Map configuration = ConfigurationHelper.newInstance(this)
             .loadStepDefaults()
