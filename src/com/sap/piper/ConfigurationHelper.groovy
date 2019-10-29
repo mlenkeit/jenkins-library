@@ -41,6 +41,7 @@ class ConfigurationHelper implements Serializable {
 
     ConfigurationHelper mixinStageConfig(commonPipelineEnvironment, stageName, Set filter = null, Map compatibleParameters = [:]){
         Map stageConfiguration = ConfigurationLoader.stageConfiguration([commonPipelineEnvironment: commonPipelineEnvironment], stageName)
+        print "stage configuration " + stageConfiguration.toString()
         return mixin(stageConfiguration, filter, compatibleParameters)
     }
 
