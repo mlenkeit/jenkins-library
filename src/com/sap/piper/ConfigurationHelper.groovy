@@ -43,7 +43,10 @@ class ConfigurationHelper implements Serializable {
         Map stageConfiguration = ConfigurationLoader.stageConfiguration([commonPipelineEnvironment: commonPipelineEnvironment], stageName)
         this.step.echo("stage config " + stageName)
         this.step.echo("config " + stageConfiguration.toString())
-        return mixin(stageConfiguration, filter, compatibleParameters)
+        this.step.echo("config before mixin: " + this.use().toString())
+        ConfigurationHelper ch = mixin(stageConfiguration, filter, compatibleParameters)
+        this.step.echo("config after mixin: " + this.use().toString())
+        return ch
     }
 
     ConfigurationHelper mixinStepConfig(commonPipelineEnvironment, Set filter = null, Map compatibleParameters = [:]){
